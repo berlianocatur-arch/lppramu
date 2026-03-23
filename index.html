@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dealer Hyundai Jakarta Utara</title>
+
+<meta name="description" content="Dealer Hyundai Jakarta harga terbaik, promo mobil terbaru 2026">
+<meta property="og:title" content="Dealer Hyundai Jakarta">
+<meta property="og:image" content="mobil.jpeg">
+
+<link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="nav-left">
+<h2>HYUNDAI</h2>
+</div>
+
+<ul class="nav-menu">
+<li><a href="#">Beranda</a></li>
+<li><a href="#mobil">Mobil</a></li>
+<li><a href="#kontak">Kontak</a></li>
+</ul>
+
+<div class="nav-right">
+
+<input type="text" id="search" placeholder="Cari mobil...">
+
+<select id="filter">
+<option value="all">Semua</option>
+<option value="SUV">SUV</option>
+<option value="MPV">MPV</option>
+<option value="EV">Electric</option>
+</select>
+
+<select id="sort">
+<option value="default">Urutkan</option>
+<option value="murah">Harga Termurah</option>
+<option value="mahal">Harga Termahal</option>
+</select>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div>
+<h1>Hyundai Arista Indonesia</h1>
+<p>Promo Motor Show 2026</p>
+
+<a class="btn" href="#">Hubungi Sales Consultant</a>
+
+</div>
+
+</section>
+
+
+<section class="section" id="mobil">
+<h2>Tipe Mobil Hyundai</h2>
+
+<div class="cars"></div>
+</section>
+
+<section class="section" id="kontak">
+<h2>Booking Test Drive</h2>
+
+<div class="form-box">
+
+<input type="text" id="nama" placeholder="Nama">
+<input type="text" id="waUser" placeholder="No WhatsApp">
+<input type="text" id="mobilUser" placeholder="Mobil yang diminati">
+<textarea id="pesan" placeholder="Pesan"></textarea>
+
+<button class="btn" onclick="kirimWA()">Kirim via WhatsApp</button>
+
+</div>
+
+</section>
+
+<a class="wa" href="https://wa.me/628123456789">Chat Sales</a>
+
+<div class="cta-bottom">
+🔥 Promo Terbatas! Hubungi Sekarang
+</div>
+
+<footer>
+Dealer Hyundai Jakarta Utara
+</footer>
+
+<script>
+
+/* DATA MOBIL */
+let cars = []
+
+async function loadCars(){
+
+const res = await fetch("data/cars.json")
+cars = await res.json()
+
+renderCars()
+
+}
+
+function renderCars(){
+
+let keyword = document.getElementById("search").value.toLowerCase()
+let filter = document.getElementById("filter").value
+let sort = document.getElementById("sort").value
+
+let filtered = cars.filter(car => {
+
+let matchName = car.name.toLowerCase().includes(keyword)
+let matchCategory = filter === "all" || car.category === filter
+
+return matchName && matchCategory
+
+})
+
+if(sort === "murah"){
+filtered.sort((a,b)=>a.price-b.price)
+}
+
+if(sort === "mahal"){
+filtered.sort((a,b)=>b.price-a.price)
+}
+
+let html=""
+
+filtered.forEach(car=>{
+html+=`
+<div class="card">
+
+<div class="badge">${car.badge}</div>
+
+<img src="${car.image}">
+
+<h3>${car.name}</h3>
+
+<p>
+<span class="old">Rp ${car.oldPrice.toLocaleString()}</span><br>
+<span class="price">Rp ${car.price.toLocaleString()}</span>
+</p>
+
+<button class="btn" onclick="pilihMobil('${car.name}')">
+Minat
+</button>
+
+</div>
+`
+})
+
+document.querySelector(".cars").innerHTML=html
+
+}
+
+document.getElementById("search").addEventListener("input", renderCars)
+document.getElementById("filter").addEventListener("change", renderCars)
+document.getElementById("sort").addEventListener("change", renderCars)
+
+/* AUTO PILIH MOBIL */
+function pilihMobil(nama){
+document.getElementById("mobilUser").value=nama
+window.scrollTo({top:document.getElementById("kontak").offsetTop,behavior:"smooth"})
+}
+
+/* SCROLL */
+function scrollToForm(){
+document.getElementById("kontak").scrollIntoView({behavior:"smooth"})
+}
+
+/* WA */
+function kirimWA(){
+
+let nama=document.getElementById("nama").value
+let mobil=document.getElementById("mobilUser").value
+let pesan=document.getElementById("pesan").value
+
+let text=`Halo saya ${nama}
+Saya tertarik dengan ${mobil}
+Pesan: ${pesan}`
+
+window.open(`https://wa.me/628123456789?text=${encodeURIComponent(text)}`)
+
+}
+
+loadCars()
+
+</script>
+
+</body>
+</html>

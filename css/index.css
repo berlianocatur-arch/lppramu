@@ -1,0 +1,248 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f8;
+color:#222;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#0a0a0a;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.navbar ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+height:650px;
+background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),
+url("/images/mobil5.webp") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:52px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.btn{
+background:#0057ff;
+padding:14px 30px;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* SECTION */
+
+.section{
+padding:70px 40px;
+text-align:center;
+}
+
+.section h2{
+margin-bottom:20px;
+}
+
+/* CARS */
+
+
+.cars{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+border-radius:8px;
+}
+
+.price{
+color:#0057ff;
+font-weight:bold;
+}
+
+/* FORM */
+
+.form-box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-box input,
+.form-box textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+/* WA FLOAT */
+
+.wa{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* CTA FIXED */
+
+.cta-bottom{
+position:fixed;
+bottom:0;
+width:100%;
+background:#0057ff;
+color:white;
+text-align:center;
+padding:12px;
+font-weight:bold;
+z-index:999;
+}
+
+footer{
+background:#000;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
+.old{
+text-decoration: line-through;
+color: #999;
+font-size:14px;
+}
+
+.price{
+color:#e60023;
+font-weight:bold;
+font-size:18px;
+}
+
+.badge{
+position:absolute;
+background:red;
+color:white;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+}
+.card{
+position:relative;
+}
+
+.navbar{
+background:#0a0a0a;
+color:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 30px;
+gap:20px;
+}
+
+/* kiri */
+.nav-left{
+flex:1;
+}
+
+/* tengah */
+.nav-menu{
+display:flex;
+list-style:none;
+gap:20px;
+justify-content:center;
+flex:1;
+}
+
+.nav-menu a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+/* kanan */
+.nav-right{
+display:flex;
+gap:10px;
+align-items:center;
+flex:1;
+justify-content:flex-end;
+}
+
+.nav-right input,
+.nav-right select{
+padding:8px;
+border-radius:6px;
+border:none;
+}

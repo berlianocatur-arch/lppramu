@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Hyundai Stargazer",
+    "price": 249000000,
+    "oldPrice": 270000000,
+    "category": "MPV",
+    "badge": "PROMO",
+    "image": "images/mobil.jpeg"
+  },
+  {
+    "name": "Hyundai Creta",
+    "price": 299000000,
+    "oldPrice": 320000000,
+    "category": "SUV",
+    "badge": "HOT",
+    "image": "images/mobil.jpeg"
+  },
+  {
+    "name": "Hyundai Ioniq 5",
+    "price": 748000000,
+    "oldPrice": 800000000,
+    "category": "EV",
+    "badge": "EV",
+    "image": "images/mobil.jpeg"
+  }
+]
