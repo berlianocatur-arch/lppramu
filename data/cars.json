@@ -4,10 +4,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/kona1.webp"
+    "images/kona1.avif"
   ],
   "variants": [
     {
@@ -50,10 +50,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/ioniq5.webp"
+    "images/ioniq5.avif"
   ],
   "variants": [
     {
@@ -88,10 +88,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/palisadehev.webp"
+    "images/palisade.avif"
   ],
   "variants": [
     {
@@ -124,7 +124,7 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
     "images/palisadediesel.webp"
@@ -154,10 +154,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/santafe.webp"
+    "images/santafe.avif"
   ],
   "variants": [
     {
@@ -197,10 +197,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/tucson.webp"
+    "images/tucson.avif"
   ],
   "variants": [
     {
@@ -228,10 +228,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/cartenzx.webp"
+    "images/cartenzx.avif"
   ],
   "variants": [
     {
@@ -262,10 +262,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/cartenz.webp"
+    "images/stargazercartenz.avif"
   ],
   "variants": [
     {
@@ -317,10 +317,10 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
-    "images/creta.webp"
+    "images/newcreta.avif"
   ],
   "variants": [
     {
@@ -374,7 +374,7 @@
   "badge": "HOT",
   "description": "",
   "images": [
-    "images/stargazerx.webp"
+    "images/stargazerx.avif"
   ],
   "variants": [
     {
@@ -404,7 +404,7 @@
   "badge": "HOT",
   "description": "",
   "images": [
-    "images/stargazer.webp"
+    "images/stargazer.avif"
   ],
   "variants": [
     {
@@ -443,7 +443,7 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
     "images/staria.webp"

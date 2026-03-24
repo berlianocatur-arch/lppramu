@@ -62,11 +62,48 @@
 
 </section>
 
+<section class="promo-section">
 
-<section class="section" id="mobil">
-<h2>Tipe Mobil Hyundai</h2>
+<h2 class="promo-title-main">
+Tawaran & Promo Menarik Bulan Ini
+</h2>
 
-<div class="cars"></div>
+<div class="promo-container" id="promo"></div>
+
+</section>
+
+<section class="hero-slider">
+
+<button class="nav prev">‹</button>
+
+<div class="slider" id="slider"></div>
+
+<button class="nav next">›</button>
+
+<div class="dots" id="dots"></div>
+
+</section>
+
+<section class="testimoni-section">
+
+<h2 class="testi-title">
+Penawaran Menarik! Hubungi Pramudya
+</h2>
+
+<p class="testi-sub">
+Telah melakukan pengiriman puluhan unit ke seluruh Indonesia
+</p>
+
+<div class="testi-slider">
+
+<button class="testi-nav prev">‹</button>
+
+<div class="testi-track" id="testiTrack"></div>
+
+<button class="testi-nav next">›</button>
+
+</div>
+
 </section>
 
 <section class="section" id="kontak">
@@ -97,100 +134,265 @@ Dealer Hyundai Jakarta Utara
 
 <script>
 
-/* DATA MOBIL */
 let cars = []
+let current = 1
+let isDragging = false
+let startX = 0
+let currentTranslate = 0
 
 async function loadCars(){
-
 const res = await fetch("data/cars.json")
 cars = await res.json()
 
-renderCars()
-
+renderPromo()
+setupSlider()
 }
 
-function renderCars(){
+function renderPromo(){
 
-let keyword = document.getElementById("search").value.toLowerCase()
-let filter = document.getElementById("filter").value
-let sort = document.getElementById("sort").value
+let promoCars = cars.filter(car => car.badge)
 
-let filtered = cars.filter(car => {
+let html = ""
 
-let matchName = car.name.toLowerCase().includes(keyword)
-let matchCategory = filter === "all" || car.category === filter
+promoCars.forEach(car => {
 
-return matchName && matchCategory
+let harga = car.price
+let old = car.oldPrice
 
-})
-
-if(sort === "murah"){
-filtered.sort((a,b)=>a.price-b.price)
+if(car.variants){
+harga = Math.min(...car.variants.map(v=>v.price))
 }
 
-if(sort === "mahal"){
-filtered.sort((a,b)=>b.price-a.price)
-}
+html += `
+<div class="promo-item" onclick="goDetail('${car.name}')">
 
-let html=""
+<img src="${car.images[0]}">
 
-filtered.forEach(car=>{
-html+=`
-<div class="card">
+<div class="promo-text">
+<div class="promo-title">${car.name}</div>
+<div class="promo-price">
 
-<div class="badge">${car.badge}</div>
+${old ? `<span class="old">Rp ${old.toLocaleString()}</span>` : ""}
 
-<img src="/${car.images[0]}">
+<span class="new">Rp ${harga.toLocaleString()}</span>
 
-<h3>${car.name}</h3>
-
-<p>
-<span class="old">Rp ${car.oldPrice.toLocaleString()}</span><br>
-<span class="price">Rp ${car.price.toLocaleString()}</span>
-</p>
-
-<a href="detail.html?name=${encodeURIComponent(car.name)}" class="btn">
-Lihat Detail
-</a>
+</div>
+</div>
 
 </div>
 `
 })
 
-document.querySelector(".cars").innerHTML=html
+document.getElementById("promo").innerHTML = html
+}
+
+function goDetail(name){
+window.location.href = "detail.html?name=" + encodeURIComponent(name)
+}
+
+function setupSlider(){
+
+let slider = document.getElementById("slider")
+
+/* clone untuk infinite */
+let extended = [
+cars[cars.length-1],
+...cars,
+cars[0]
+]
+
+let html = ""
+extended.forEach(car => {
+
+let harga = car.price
+if(car.variants){
+harga = Math.min(...car.variants.map(v=>v.price))
+}
+
+html += `
+<div class="slide">
+<h2>${car.name}</h2>
+<p>Dari Rp ${harga.toLocaleString()}</p>
+<img src="${car.images[0]}">
+<a href="detail.html?name=${encodeURIComponent(car.name)}" class="btn">Detail</a>
+</div>
+`
+})
+
+slider.innerHTML = html
+
+updateSlider(true)
+initDrag()
+}
+
+/* UPDATE */
+function updateSlider(skipAnim=false){
+
+let slider = document.getElementById("slider")
+let slides = document.querySelectorAll(".slide")
+
+slides.forEach(s=>s.classList.remove("active"))
+slides[current].classList.add("active")
+
+let isMobile = window.innerWidth <= 768
+
+slider.style.transition = skipAnim ? "none" : "transform 0.6s cubic-bezier(0.22,1,0.36,1)"
+
+if(isMobile){
+slider.style.transform = `translateX(-${current * 100}%)`
+}else{
+slider.style.transform = `translateX(-${current * 33.33}%)`
+}
+
+}
+/* NEXT */
+function next(){
+current++
+updateSlider()
+
+if(current === cars.length + 1){
+setTimeout(()=>{
+current = 1
+updateSlider(true)
+},600)
+}
+}
+
+/* PREV */
+function prev(){
+current--
+updateSlider()
+
+if(current === 0){
+setTimeout(()=>{
+current = cars.length
+updateSlider(true)
+},600)
+}
+}
+
+/* AUTO */
+setInterval(next, 4000)
+
+/* CLICK */
+document.querySelector(".next").onclick = next
+document.querySelector(".prev").onclick = prev
+
+/* DRAG DESKTOP + MOBILE */
+function initDrag(){
+
+const slider = document.getElementById("slider")
+
+slider.addEventListener("mousedown", startDrag)
+slider.addEventListener("touchstart", startDrag)
+
+slider.addEventListener("mouseup", endDrag)
+slider.addEventListener("mouseleave", endDrag)
+slider.addEventListener("touchend", endDrag)
+
+slider.addEventListener("mousemove", drag)
+slider.addEventListener("touchmove", drag)
+}
+
+function startDrag(e){
+isDragging = true
+startX = e.touches ? e.touches[0].clientX : e.clientX
+}
+
+function drag(e){
+if(!isDragging) return
+
+let x = e.touches ? e.touches[0].clientX : e.clientX
+let diff = x - startX
+
+currentTranslate = diff
+}
+
+function endDrag(e){
+if(!isDragging) return
+isDragging = false
+
+if(currentTranslate < -50){
+next()
+}else if(currentTranslate > 50){
+prev()
+}
+
+currentTranslate = 0
+}
+
+let testimonials = []
+let testiIndex = 0
+
+async function loadTesti(){
+
+const res = await fetch("data/testimonials.json")
+testimonials = await res.json()
+
+renderTesti()
+initTestiSlider()
 
 }
 
-document.getElementById("search").addEventListener("input", renderCars)
-document.getElementById("filter").addEventListener("change", renderCars)
-document.getElementById("sort").addEventListener("change", renderCars)
+function renderTesti(){
 
-/* AUTO PILIH MOBIL */
-function pilihMobil(nama){
-document.getElementById("mobilUser").value=nama
-window.scrollTo({top:document.getElementById("kontak").offsetTop,behavior:"smooth"})
+let html = ""
+
+testimonials.forEach(t=>{
+html += `
+<div class="testi-card">
+<img src="${t.image}">
+</div>
+`
+})
+
+setTimeout(()=>{
+updateTesti()
+},100)
+
+document.getElementById("testiTrack").innerHTML = html
 }
 
-/* SCROLL */
-function scrollToForm(){
-document.getElementById("kontak").scrollIntoView({behavior:"smooth"})
-}
+/* SLIDER */
+function initTestiSlider(){
 
-/* WA */
-function kirimWA(){
+document.querySelector(".testi-nav.next").onclick = nextTesti
+document.querySelector(".testi-nav.prev").onclick = prevTesti
 
-let nama=document.getElementById("nama").value
-let mobil=document.getElementById("mobilUser").value
-let pesan=document.getElementById("pesan").value
-
-let text=`Halo saya ${nama}
-Saya tertarik dengan ${mobil}
-Pesan: ${pesan}`
-
-window.open(`https://wa.me/628123456789?text=${encodeURIComponent(text)}`)
+setInterval(nextTesti, 4000)
 
 }
 
+/* NEXT */
+function nextTesti(){
+testiIndex++
+updateTesti()
+}
+
+/* PREV */
+function prevTesti(){
+testiIndex--
+updateTesti()
+}
+
+/* UPDATE */
+function updateTesti(){
+
+let track = document.getElementById("testiTrack")
+let cards = document.querySelectorAll(".testi-card")
+let total = testimonials.length
+
+if(testiIndex >= total) testiIndex = 0
+if(testiIndex < 0) testiIndex = total - 1
+
+cards.forEach(c=>c.classList.remove("active"))
+cards[testiIndex].classList.add("active")
+
+let width = cards[0].offsetWidth + 30
+
+track.style.transform = `translateX(-${testiIndex * width}px)`
+}
+loadTesti()
 loadCars()
 
 </script>
