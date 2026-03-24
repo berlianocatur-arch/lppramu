@@ -88,7 +88,7 @@
 <a class="wa" href="https://wa.me/628123456789">Chat Sales</a>
 
 <div class="cta-bottom">
-🔥 Promo Terbatas! Hubungi Sekarang
+Promo Terbatas! Hubungi Sekarang
 </div>
 
 <footer>
@@ -140,7 +140,7 @@ html+=`
 
 <div class="badge">${car.badge}</div>
 
-<img src="${car.image}">
+<img src="/${car.images[0]}">
 
 <h3>${car.name}</h3>
 
@@ -149,9 +149,9 @@ html+=`
 <span class="price">Rp ${car.price.toLocaleString()}</span>
 </p>
 
-<button class="btn" onclick="pilihMobil('${car.name}')">
-Minat
-</button>
+<a href="detail.html?name=${encodeURIComponent(car.name)}" class="btn">
+Lihat Detail
+</a>
 
 </div>
 `

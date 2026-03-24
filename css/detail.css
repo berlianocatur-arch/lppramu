@@ -1,0 +1,189 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f8;
+color:#222;
+}
+
+/* CONTAINER */
+.detail-container{
+display:flex;
+gap:50px;
+padding:60px;
+flex-wrap:wrap;
+}
+
+/* LEFT */
+.detail-left{
+flex:1;
+min-width:300px;
+}
+
+/* RIGHT */
+.detail-right{
+flex:1;
+min-width:300px;
+}
+
+/* GAMBAR UTAMA */
+.main-img{
+width:100%;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* GALLERY */
+.gallery{
+display:flex;
+gap:10px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+
+.gallery img{
+width:80px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* TITLE */
+.detail-right h1{
+font-size:28px;
+margin-bottom:15px;
+}
+
+/* PRICE */
+.old{
+text-decoration: line-through;
+color:#999;
+font-size:14px;
+}
+
+.price{
+color:#000000;
+font-weight:bold;
+font-size:24px;
+}
+
+/* DESC */
+#desc{
+margin-top:15px;
+line-height:1.6;
+}
+
+/* TABLE */
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+table tr:nth-child(even){
+background:#fafafa;
+}
+
+/* BUTTON */
+.btn{
+margin-top:20px;
+background:#0057ff;
+color:white;
+padding:14px;
+width:100%;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#003fcc;
+}
+
+.variant{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 15px;
+margin-top:8px;
+background:#ffffff;
+border-radius:8px;
+}
+
+.variant-name{
+font-weight:500;
+}
+
+.variant-price{
+font-weight:bold;
+}
+
+.variant-price.best{
+color:#ff3b3b;
+}
+
+.detail-right h1{
+margin-bottom:15px;
+}
+
+#desc{
+margin-top:10px;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+table{
+margin-top:15px;
+margin-bottom:20px;
+}
+
+/* badge kecil */
+.badge-best{
+background:#ff3b3b;
+color:white;
+font-size:10px;
+padding:3px 6px;
+border-radius:5px;
+margin-left:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+.detail-container{
+flex-direction:column;
+padding:20px;
+}
+
+.gallery img.active{
+border:2px solid #0057ff;
+}
+
+.main-img:hover{
+transform:scale(1.02);
+transition:0.3s;
+}
+
+.main-img{
+height:auto;
+}
+
+}

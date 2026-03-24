@@ -1,26 +1,471 @@
 [
-  {
-    "name": "Hyundai Stargazer",
-    "price": 249000000,
-    "oldPrice": 270000000,
-    "category": "MPV",
-    "badge": "PROMO",
-    "image": "images/mobil.jpeg"
-  },
-  {
-    "name": "Hyundai Creta",
-    "price": 299000000,
-    "oldPrice": 320000000,
-    "category": "SUV",
-    "badge": "HOT",
-    "image": "images/mobil.jpeg"
-  },
-  {
-    "name": "Hyundai Ioniq 5",
-    "price": 748000000,
-    "oldPrice": 800000000,
-    "category": "EV",
-    "badge": "EV",
-    "image": "images/mobil.jpeg"
+{
+  "name": "Hyundai Kona Electric.",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/kona1.webp"
+  ],
+  "variants": [
+    {
+      "name": "N Line",
+      "price": 689550000
+    },
+    {
+      "name": "Signature Long",
+      "price": 668550000
+    },
+    {
+      "name": "Signature Standard",
+      "price": 651650000
+    },
+    {
+      "name": "Prime Long",
+      "price": 634500000
+    },
+    {
+      "name": "Prime Standard",
+      "price": 583500000 
+    },
+    {
+      "name": "Style",
+      "price": 565250000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Electric",
+    "Kapasitas Baterai": "48.9 - 66 kWh",
+    "Tenaga": "154 - 214 Hp",
+    "Kapasitas Tempat Duduk" : "5 Kursi"
   }
+},
+
+{
+  "name": "Hyundai IONIQ 5",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/ioniq5.webp"
+  ],
+  "variants": [
+    {
+      "name": "Signature Long",
+      "price": 925600000
+    },
+    {
+      "name": "Signature Standard",
+      "price": 873900000
+    },
+    {
+      "name": "Prime Long",
+      "price": 851500000
+    },
+    {
+      "name": "Prime Standard",
+      "price": 809000000 
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Electric",
+    "Kapasitas Baterai": "58 - 72.6 kWh",
+    "Tenaga": "168 - 214 Hp",
+    "Kapasitas Tempat Duduk" : "5 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Palisade HEV",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/palisadehev.webp"
+  ],
+  "variants": [
+    {
+      "name": "Calligraphy AWD HEV A/T",
+      "price": 1391800000
+    },
+    {
+      "name": "Calligraphy FWD HEV A/T",
+      "price": 1304700000
+    },
+    {
+      "name": "Signature FWD HEV A/T",
+      "price": 1131900000
+    }
+    
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "2497 cc",
+    "Kapasitas Baterai": "1.65 kWh",
+    "Tenaga": "258 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Palisade Diesel 2.2 CRDi",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/palisadediesel.webp"
+  ],
+  "variants": [
+    {
+      "name": "Signature XRT FWD A/T",
+      "price": 1118600000
+    },
+    {
+      "name": "Calligraphy FWD",
+      "price": 1089700000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Diesel",
+    "Kapasitas Mesin": "2199 cc",
+    "Tenaga": "197 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Santa FE",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/santafe.webp"
+  ],
+  "variants": [
+    {
+      "name": "Calligraphy XRT  HEV",
+      "price": 932400000
+    },
+    {
+      "name": "Calligraphy    HEV",
+      "price": 914700000
+    },
+    {
+      "name": "Prime    HEV",
+      "price": 827400000
+    },
+    {
+      "name": "Calligraphy    Gasoline",
+      "price": 766600000
+    },
+    {
+      "name": "Prime    Gasoline"  ,
+      "price": 735800000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1598 - 2497 cc",
+    "Kapasitas Baterai": "44. kWh",
+    "Tenaga": "178 - 191 Hp",
+    "Kapasitas Tempat Duduk" : "6 - 7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Tucson",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/tucson.webp"
+  ],
+  "variants": [
+    {
+      "name": "HEV",
+      "price": 766600000
+    },
+    {
+      "name": "Gasoline",
+      "price": 652000000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1598 - 1999 cc",
+    "Kapasitas Baterai": "1.49 kWh",
+    "Tenaga": "154 - 178 Hp",
+    "Kapasitas Tempat Duduk" : "5 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Stargazer Cartenz X",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/cartenzx.webp"
+  ],
+  "variants": [
+    {
+      "name": "Prime",
+      "price": 400700000
+    },
+    {
+      "name": "Style",
+      "price": 383700000
+    },
+    {
+      "name": "Trend",
+      "price": 370250000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "iVT",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1497 cc",
+    "Tenaga": "113 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Stargazer Cartenz",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/cartenz.webp"
+  ],
+  "variants": [
+    {
+      "name": "Prime",
+      "price": 358300000
+    },
+    {
+      "name": "Prime Non Hss",
+      "price": 348300000
+    },
+    {
+      "name": "Smart",
+      "price": 370250000
+    },
+    {
+      "name": "Smart Non Hss",
+      "price": 330350000
+    },
+    {
+      "name": "Style IVT",
+      "price": 306800000
+    },
+    {
+      "name": "Style MT",
+      "price": 296600000
+    },
+    {
+      "name": "Trend IVT",
+      "price": 286350000
+    },
+    {
+      "name": "Trend MT",
+      "price": 276100000
+    }
+
+  ],
+
+  "specs": {
+    "Transmisi": "Manual,iVT",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1497 cc",
+    "Tenaga": "113 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Creta",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/creta.webp"
+  ],
+  "variants": [
+    {
+      "name": "N Line Turbo",
+      "price": 521000000
+    },
+    {
+      "name": "N Line",
+      "price": 473000000
+    },
+    {
+      "name": "Alpha",
+      "price": 455000000
+    },
+    {
+      "name": "Prime",
+      "price": 438500000
+    },
+    {
+      "name": "Style",
+      "price": 407350000
+    },
+    {
+      "name": "Trend  IVT",
+      "price": 361650000
+    },
+    {
+      "name": "Trend  M/T",
+      "price": 340600000
+    },
+    {
+      "name": "Active   M/T",
+      "price": 307800000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Manual,iVT",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1497 cc",
+    "Tenaga": "113 - 158 Hp",
+    "Kapasitas Tempat Duduk" : "5 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Stargazer X",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/stargazerx.webp"
+  ],
+  "variants": [
+    {
+      "name": "Prime",
+      "price": 358600000
+    },
+    {
+      "name": "Style",
+      "price": 347750000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "CVT",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1497 cc",
+    "Tenaga": "113 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Stargazer",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/stargazer.webp"
+  ],
+  "variants": [
+    {
+      "name": "Prime",
+      "price": 331900000
+    },
+    {
+      "name": "Essential  IVT",
+      "price": 282000000
+    },
+    {
+      "name": "Essential  M/T",
+      "price": 270300000
+    },
+    {
+      "name": "Active   IVT",
+      "price": 271550000
+    },
+    {
+      "name": "Active   M/T",
+      "price": 258200000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "CVT",
+    "Bahan Bakar": "Bensin",
+    "Kapasitas Mesin": "1497 cc",
+    "Tenaga": "113 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+},
+
+{
+  "name": "Hyundai Staria Diesel 2.2 CRDi",
+  "price": 249000000,
+  "oldPrice": 270000000,
+  "category": "SUV",
+  "badge": "HOT",
+  "description": "",
+  "images": [
+    "images/staria.webp"
+  ],
+  "variants": [
+    {
+      "name": "7 Seater",
+      "price": 1095600000
+    },
+    {
+      "name": "9 Seater",
+      "price": 954800000
+    }
+  ],
+
+  "specs": {
+    "Transmisi": "Otomatis",
+    "Bahan Bakar": "Diesel",
+    "Kapasitas Mesin": "2199 cc",
+    "Tenaga": "175 Hp",
+    "Kapasitas Tempat Duduk" : "7 Kursi"
+  }
+}
+
 ]

@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+<meta charset="UTF-8">
 <title>Detail Mobil</title>
+<link rel="stylesheet" href="css/detail.css">
 </head>
 
 <body>
 
-<div id="detail"></div>
+<div class="detail-container">
 
-<input id="nama" placeholder="Nama">
-<input id="wa" placeholder="WhatsApp">
+<div class="detail-left">
+<img id="mainImage" class="main-img">
+<div id="gallery" class="gallery"></div>
+</div>
 
-<button onclick="wa()">Hubungi Sales</button>
+<div class="detail-right">
+
+<h1 id="name"></h1>
+
+<p>
+<span class="old" id="oldPrice"></span><br>
+<span class="price" id="price"></span>
+</p>
+
+<p id="desc"></p>
+
+<h3>Spesifikasi</h3>
+<table id="specs"></table>
+
+<button onclick="wa()" class="btn">Hubungi Sales</button>
+
+</div>
+
+</div>
 
 <script src="js/detail.js"></script>
 
