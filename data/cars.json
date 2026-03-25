@@ -2,9 +2,9 @@
 {
   "name": "Hyundai Kona Electric.",
   "price": 249000000,
-  "oldPrice": 270000000,
+  "oldPrice": 668550000,
   "category": "SUV",
-  "badge": "",
+  "badge": "HOT",
   "description": "",
   "images": [
     "images/kona1.avif"
@@ -32,7 +32,7 @@
     },
     {
       "name": "Style",
-      "price": 565250000
+      "price": 460000000
     }
   ],
 
@@ -48,9 +48,9 @@
 {
   "name": "Hyundai IONIQ 5",
   "price": 249000000,
-  "oldPrice": 270000000,
+  "oldPrice": 925000000,
   "category": "SUV",
-  "badge": "",
+  "badge": "HOT",
   "description": "",
   "images": [
     "images/ioniq5.avif"
@@ -70,7 +70,7 @@
     },
     {
       "name": "Prime Standard",
-      "price": 809000000 
+      "price": 675000000 
     }
   ],
 
@@ -195,12 +195,12 @@
 {
   "name": "Hyundai Tucson",
   "price": 249000000,
-  "oldPrice": 270000000,
+  "oldPrice": 776000000,
   "category": "SUV",
-  "badge": "",
+  "badge": "HOT",
   "description": "",
   "images": [
-    "images/tucson.avif"
+    "images/tucson2.avif"
   ],
   "variants": [
     {
@@ -209,7 +209,7 @@
     },
     {
       "name": "Gasoline",
-      "price": 652000000
+      "price": 550000000
     }
   ],
 
@@ -371,7 +371,7 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
     "images/stargazerx.avif"
@@ -401,7 +401,7 @@
   "price": 249000000,
   "oldPrice": 270000000,
   "category": "SUV",
-  "badge": "HOT",
+  "badge": "",
   "description": "",
   "images": [
     "images/stargazer.avif"

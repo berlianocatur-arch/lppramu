@@ -68,7 +68,15 @@
 Tawaran & Promo Menarik Bulan Ini
 </h2>
 
-<div class="promo-container" id="promo"></div>
+<div class="promo-slider">
+
+<button class="promo-nav prev">‹</button>
+
+<div class="promo-track" id="promo"></div>
+
+<button class="promo-nav next">›</button>
+
+</div>
 
 </section>
 
@@ -137,7 +145,6 @@ Dealer Hyundai Jakarta Utara
 let cars = []
 let current = 1
 let isDragging = false
-let startX = 0
 let currentTranslate = 0
 
 async function loadCars(){
@@ -147,6 +154,8 @@ cars = await res.json()
 renderPromo()
 setupSlider()
 }
+
+let promoIndex = 0
 
 function renderPromo(){
 
@@ -184,6 +193,38 @@ ${old ? `<span class="old">Rp ${old.toLocaleString()}</span>` : ""}
 })
 
 document.getElementById("promo").innerHTML = html
+
+initPromoSlider()
+}
+
+function initPromoSlider(){
+
+document.querySelector(".promo-nav.next").onclick = nextPromo
+document.querySelector(".promo-nav.prev").onclick = prevPromo
+
+setInterval(nextPromo, 3500)
+
+}
+
+function nextPromo(){
+promoIndex++
+updatePromo()
+}
+
+function prevPromo(){
+promoIndex--
+updatePromo()
+}
+
+function updatePromo(){
+
+let track = document.getElementById("promo")
+let total = document.querySelectorAll(".promo-item").length
+
+if(promoIndex >= total) promoIndex = 0
+if(promoIndex < 0) promoIndex = total - 1
+
+track.style.transform = `translateX(-${promoIndex * 100}%)`
 }
 
 function goDetail(name){
@@ -226,7 +267,7 @@ initDrag()
 }
 
 /* UPDATE */
-function updateSlider(skipAnim=false){
+function updateSlider(skip=false){
 
 let slider = document.getElementById("slider")
 let slides = document.querySelectorAll(".slide")
@@ -234,17 +275,11 @@ let slides = document.querySelectorAll(".slide")
 slides.forEach(s=>s.classList.remove("active"))
 slides[current].classList.add("active")
 
-let isMobile = window.innerWidth <= 768
-
-slider.style.transition = skipAnim ? "none" : "transform 0.6s cubic-bezier(0.22,1,0.36,1)"
-
-if(isMobile){
-slider.style.transform = `translateX(-${current * 100}%)`
-}else{
-slider.style.transform = `translateX(-${current * 33.33}%)`
+slider.style.transition = skip ? "none" : "transform 0.6s cubic-bezier(0.22,1,0.36,1)"
+let offset = current - 1
+slider.style.transform = `translateX(-${offset * 33.33}%)`
 }
 
-}
 /* NEXT */
 function next(){
 current++
@@ -275,23 +310,42 @@ updateSlider(true)
 setInterval(next, 4000)
 
 /* CLICK */
-document.querySelector(".next").onclick = next
-document.querySelector(".prev").onclick = prev
+document.querySelector(".hero-slider .next").onclick = next
+document.querySelector(".hero-slider .prev").onclick = prev
 
 /* DRAG DESKTOP + MOBILE */
+let startX = 0
+let isDown = false
+
 function initDrag(){
 
 const slider = document.getElementById("slider")
 
-slider.addEventListener("mousedown", startDrag)
-slider.addEventListener("touchstart", startDrag)
+let startX = 0
 
-slider.addEventListener("mouseup", endDrag)
-slider.addEventListener("mouseleave", endDrag)
-slider.addEventListener("touchend", endDrag)
+slider.addEventListener("touchstart", e=>{
+startX = e.touches[0].clientX
+})
 
-slider.addEventListener("mousemove", drag)
-slider.addEventListener("touchmove", drag)
+slider.addEventListener("touchend", e=>{
+let diff = e.changedTouches[0].clientX - startX
+
+if(diff < -60) next()
+if(diff > 60) prev()
+})
+
+/* desktop */
+slider.addEventListener("mousedown", e=>{
+startX = e.clientX
+})
+
+slider.addEventListener("mouseup", e=>{
+let diff = e.clientX - startX
+
+if(diff < -60) next()
+if(diff > 60) prev()
+})
+
 }
 
 function startDrag(e){
