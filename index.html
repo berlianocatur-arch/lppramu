@@ -25,27 +25,12 @@
 
 <ul class="nav-menu">
 <li><a href="#">Beranda</a></li>
-<li><a href="#mobil">Mobil</a></li>
+<li><a href="mobil.html">Mobil</a></li>
 <li><a href="#kontak">Kontak</a></li>
 </ul>
 
 <div class="nav-right">
-
-<input type="text" id="search" placeholder="Cari mobil...">
-
-<select id="filter">
-<option value="all">Semua</option>
-<option value="SUV">SUV</option>
-<option value="MPV">MPV</option>
-<option value="EV">Electric</option>
-</select>
-
-<select id="sort">
-<option value="default">Urutkan</option>
-<option value="murah">Harga Termurah</option>
-<option value="mahal">Harga Termahal</option>
-</select>
-
+<a class="btn" href="mobil.html">Lihat Semua Mobil</a>
 </div>
 
 </nav>
@@ -78,19 +63,6 @@ Tawaran & Promo Menarik Bulan Ini
 
 </div>
 
-</section>
-
-<section class="hero-slider">
-
-<button class="nav prev">‹</button>
-
-<div class="slider" id="slider"></div>
-
-<button class="nav next">›</button>
-
-<div class="dots" id="dots"></div>
-
-</section>
 
 <section class="testimoni-section">
 
@@ -152,7 +124,8 @@ const res = await fetch("data/cars.json")
 cars = await res.json()
 
 renderPromo()
-setupSlider()
+if(document.getElementById("slider")){
+}
 }
 
 let promoIndex = 0
@@ -219,10 +192,13 @@ updatePromo()
 function updatePromo(){
 
 let track = document.getElementById("promo")
-let total = document.querySelectorAll(".promo-item").length
+let items = document.querySelectorAll(".promo-item")
 
-if(promoIndex >= total) promoIndex = 0
-if(promoIndex < 0) promoIndex = total - 1
+if(promoIndex >= items.length) promoIndex = 0
+if(promoIndex < 0) promoIndex = items.length - 1
+
+items.forEach(i => i.classList.remove("active"))
+items[promoIndex].classList.add("active")
 
 track.style.transform = `translateX(-${promoIndex * 100}%)`
 }
@@ -231,87 +207,7 @@ function goDetail(name){
 window.location.href = "detail.html?name=" + encodeURIComponent(name)
 }
 
-function setupSlider(){
 
-let slider = document.getElementById("slider")
-
-/* clone untuk infinite */
-let extended = [
-cars[cars.length-1],
-...cars,
-cars[0]
-]
-
-let html = ""
-extended.forEach(car => {
-
-let harga = car.price
-if(car.variants){
-harga = Math.min(...car.variants.map(v=>v.price))
-}
-
-html += `
-<div class="slide">
-<h2>${car.name}</h2>
-<p>Dari Rp ${harga.toLocaleString()}</p>
-<img src="${car.images[0]}">
-<a href="detail.html?name=${encodeURIComponent(car.name)}" class="btn">Detail</a>
-</div>
-`
-})
-
-slider.innerHTML = html
-
-updateSlider(true)
-initDrag()
-}
-
-/* UPDATE */
-function updateSlider(skip=false){
-
-let slider = document.getElementById("slider")
-let slides = document.querySelectorAll(".slide")
-
-slides.forEach(s=>s.classList.remove("active"))
-slides[current].classList.add("active")
-
-slider.style.transition = skip ? "none" : "transform 0.6s cubic-bezier(0.22,1,0.36,1)"
-let offset = current - 1
-slider.style.transform = `translateX(-${offset * 33.33}%)`
-}
-
-/* NEXT */
-function next(){
-current++
-updateSlider()
-
-if(current === cars.length + 1){
-setTimeout(()=>{
-current = 1
-updateSlider(true)
-},600)
-}
-}
-
-/* PREV */
-function prev(){
-current--
-updateSlider()
-
-if(current === 0){
-setTimeout(()=>{
-current = cars.length
-updateSlider(true)
-},600)
-}
-}
-
-/* AUTO */
-setInterval(next, 4000)
-
-/* CLICK */
-document.querySelector(".hero-slider .next").onclick = next
-document.querySelector(".hero-slider .prev").onclick = prev
 
 /* DRAG DESKTOP + MOBILE */
 let startX = 0
@@ -330,8 +226,8 @@ startX = e.touches[0].clientX
 slider.addEventListener("touchend", e=>{
 let diff = e.changedTouches[0].clientX - startX
 
-if(diff < -60) next()
-if(diff > 60) prev()
+if(diff < -50) next()
+if(diff > 50) prev()
 })
 
 /* desktop */
@@ -342,8 +238,8 @@ startX = e.clientX
 slider.addEventListener("mouseup", e=>{
 let diff = e.clientX - startX
 
-if(diff < -60) next()
-if(diff > 60) prev()
+if(diff < -50) next()
+if(diff > 50) prev()
 })
 
 }

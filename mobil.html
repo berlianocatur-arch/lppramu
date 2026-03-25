@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daftar Mobil Hyundai</title>
+
+<link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="nav-left">
+<h2>HYUNDAI</h2>
+</div>
+
+<ul class="nav-menu">
+<li><a href="index.html">Beranda</a></li>
+<li><a href="#">Mobil</a></li>
+<li><a href="index.html#kontak">Kontak</a></li>
+</ul>
+
+<div class="nav-right">
+
+<input type="text" id="search" placeholder="Cari mobil...">
+
+<select id="filter">
+<option value="all">Semua</option>
+<option value="SUV">SUV</option>
+<option value="MPV">MPV</option>
+<option value="EV">Electric</option>
+</select>
+
+<select id="sort">
+<option value="default">Urutkan</option>
+<option value="murah">Harga Termurah</option>
+<option value="mahal">Harga Termahal</option>
+</select>
+
+</div>
+
+</nav>
+
+<section class="marketplace">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+<h3>Filter</h3>
+
+<input type="text" id="search" placeholder="Cari mobil...">
+
+<label>Kategori</label>
+<select id="filterCategory">
+<option value="all">Semua</option>
+<option value="SUV">SUV</option>
+<option value="MPV">MPV</option>
+<option value="EV">Electric</option>
+</select>
+
+<label>Harga Maks</label>
+<input type="range" id="priceRange" min="0" max="1000000000" step="5000000">
+<p id="priceLabel">Max: Rp 1.000.000.000</p>
+
+<label>Urutkan</label>
+<select id="sort">
+<option value="default">Default</option>
+<option value="murah">Termurah</option>
+<option value="mahal">Termahal</option>
+</select>
+
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+<div class="cars"></div>
+</div>
+
+</section>
+
+<script>
+
+let cars = []
+
+async function loadCars(){
+
+const res = await fetch("data/cars.json")
+cars = await res.json()
+
+renderCars()
+
+}
+
+function renderCars(){
+
+let keyword = document.getElementById("search").value.toLowerCase()
+let category = document.getElementById("filterCategory").value
+let sort = document.getElementById("sort").value
+let maxPrice = document.getElementById("priceRange").value
+
+let filtered = cars.filter(car => {
+
+let harga = car.price
+
+if(car.variants){
+harga = Math.min(...car.variants.map(v=>v.price))
+}
+
+let matchName = car.name.toLowerCase().includes(keyword)
+let matchCategory = category === "all" || car.category === category
+let matchPrice = harga <= maxPrice
+
+return matchName && matchCategory && matchPrice
+
+})
+
+/* SORT */
+if(sort === "murah"){
+filtered.sort((a,b)=>a.price-b.price)
+}
+
+if(sort === "mahal"){
+filtered.sort((a,b)=>b.price-a.price)
+}
+
+/* RENDER */
+let html=""
+
+filtered.forEach(car=>{
+
+let harga = car.price
+
+if(car.variants){
+harga = Math.min(...car.variants.map(v=>v.price))
+}
+
+html+=`
+<div class="card">
+
+<img src="/${car.images[0]}">
+
+<h3>${car.name}</h3>
+
+<p class="price">Rp ${harga.toLocaleString()}</p>
+
+<a href="detail.html?name=${encodeURIComponent(car.name)}" class="btn">
+Detail
+</a>
+
+</div>
+`
+})
+
+document.querySelector(".cars").innerHTML=html
+
+}
+
+let priceRange = document.getElementById("priceRange")
+let priceLabel = document.getElementById("priceLabel")
+
+priceRange.addEventListener("input", () => {
+priceLabel.innerText = "Max: Rp " + parseInt(priceRange.value).toLocaleString()
+renderCars()
+})
+
+document.getElementById("search").addEventListener("input", renderCars)
+document.getElementById("filterCategory").addEventListener("change", renderCars)
+document.getElementById("sort").addEventListener("change", renderCars)
+
+document.getElementById("search").addEventListener("input", renderCars)
+document.getElementById("filter").addEventListener("change", renderCars)
+document.getElementById("sort").addEventListener("change", renderCars)
+
+loadCars()
+
+</script>
+
+</body>
+</html>
